@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Executive dashboard — Pipeline Quality Scorer™</title>
+<meta name="description" content="Pipeline quality, evidence-supported pipeline, revenue exposure, the biggest constraint and the next evidence-driven actions."/>
+<meta property="og:title" content="Executive dashboard — Pipeline Quality Scorer™"/>
+<meta property="og:description" content="Pipeline quality, evidence-supported pipeline, revenue exposure, the biggest constraint and the next evidence-driven actions."/>
+<meta name="theme-color" content="#F6F4ED"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 26 26%22><rect width=%2226%22 height=%2226%22 rx=%224%22 fill=%22%2317150F%22/></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/styles.css"/>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a href="index.html" class="wordmark" aria-label="Pipeline Quality Scorer home">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<rect x="0.5" y="0.5" width="25" height="25" rx="2.5" fill="#17150F" stroke="#DDD6C4"/>
+<path d="M7 19V7h5.4c1.4 0 2.5.35 3.35 1.05.85.7 1.27 1.68 1.27 2.95 0 1.27-.42 2.25-1.27 2.95-.85.7-1.95 1.05-3.35 1.05H9.6V19H7Zm2.6-6.2h2.6c.73 0 1.28-.16 1.66-.48.38-.32.57-.79.57-1.42s-.19-1.1-.57-1.42c-.38-.32-.93-.48-1.66-.48H9.6v3.8Z" fill="#F6F4ED"/>
+</svg>
+      <span class="wordmark-label">Pipeline Quality Scorer<sup>&trade;</sup></span>
+    </a>
+    <nav class="primary" aria-label="Primary">
+      <ul>
+        <li><a href="index.html" aria-current="page">Dashboard</a></li>
+<li><a href="pipeline.html">Pipeline</a></li>
+<li><a href="relationships.html">Relationships</a></li>
+<li><a href="diagnostic.html">Diagnostic</a></li>
+<li><a href="actions.html">Actions</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main>
+<div class="wrap">
+
+<h1 class="page-title">Executive dashboard</h1>
+<p class="page-intro">One source of truth. Every figure below is calculated from opportunity-level evidence.</p>
+
+<div style="margin-top:32px;">
+<section class="grid-lines cols-3" aria-label="Evidence-supported pipeline">
+  <div class="cell">
+    <p class="eyebrow">Reported pipeline</p>
+    <p class="figure" style="margin:6px 0 0;font-size:40px;">$11.1M</p>
+    <p class="figure" style="margin:2px 0 0;font-size:12px;color:var(--muted);">$11,100,000</p>
+    <p style="margin:8px 0 0;font-size:12px;color:var(--muted);">What the CRM records.</p>
+  </div>
+  <div class="cell">
+    <p class="eyebrow">Evidence-supported pipeline</p>
+    <p class="figure text-supported" style="margin:6px 0 0;font-size:40px;">$5.1M</p>
+    <p class="figure" style="margin:2px 0 0;font-size:12px;color:var(--muted);">$5,133,000</p>
+    <p style="margin:8px 0 0;font-size:12px;color:var(--muted);">What the evidence can currently carry.</p>
+  </div>
+  <div class="cell">
+    <p class="eyebrow">Requires validation</p>
+    <p class="figure text-risk" style="margin:6px 0 0;font-size:40px;">$6.0M</p>
+    <p class="figure" style="margin:2px 0 0;font-size:12px;color:var(--muted);">$5,967,000</p>
+    <p style="margin:8px 0 0;font-size:12px;color:var(--muted);">Recorded, not yet supported.</p>
+  </div>
+</section>
+
+<div class="panel rule-top" style="border-top:none;padding:20px;">
+  <p class="font-display" style="margin:0;max-width:720px;font-size:22px;line-height:1.35;">Your CRM reports $11.1M. Current evidence supports <span class="text-supported">$5.1M</span>.</p>
+  <div class="meter-track-lg" style="margin-top:16px;background:color-mix(in srgb, var(--risk) 25%, transparent);" role="img" aria-label="46% of reported pipeline is evidence-supported">
+    <div class="meter-fill" style="height:8px;width:46%;background:var(--supported);"></div>
+  </div>
+  <p class="eyebrow" style="margin-top:8px;">46% supported &middot; 54% requires validation &middot; confidence should not exceed the evidence</p>
+  <a href="pipeline.html" class="btn-ink" style="margin-top:20px;display:inline-block;">Why? Trace every dollar</a>
+</div>
+
+<div class="grid-lines cols-4" style="margin-top:24px;">
+  <div class="cell"><p class="eyebrow">Pipeline quality</p><p class="figure text-caution" style="margin:6px 0 0;font-size:26px;">50</p><p style="margin:4px 0 0;font-size:12px;color:var(--muted);">0&ndash;100, value-weighted</p></div>
+  <div class="cell"><p class="eyebrow">Forecast confidence</p><p class="figure text-risk" style="margin:6px 0 0;font-size:26px;">44</p><p style="margin:4px 0 0;font-size:12px;color:var(--muted);">Capped by evidence</p></div>
+  <div class="cell"><p class="eyebrow">Evidence coverage</p><p class="figure text-supported" style="margin:6px 0 0;font-size:26px;">78</p><p style="margin:4px 0 0;font-size:12px;color:var(--muted);">Share of required evidence documented</p></div>
+  <div class="cell"><p class="eyebrow">Revenue exposure</p><p class="figure text-risk" style="margin:6px 0 0;font-size:26px;">$6.0M</p><p style="margin:4px 0 0;font-size:12px;color:var(--muted);">Recorded without sufficient support</p></div>
+</div>
+
+<div style="margin-top:24px;display:grid;gap:24px;grid-template-columns:1fr;">
+<section class="panel" style="padding:24px;">
+  <p class="eyebrow">Biggest constraint</p>
+  <p class="font-display" style="margin:8px 0 0;font-size:26px;">Timing &amp; Close Integrity</p>
+  <p class="figure text-risk" style="margin:4px 0 0;font-size:14px;">44/100 across the portfolio</p>
+  <p style="margin:12px 0 0;font-size:13.5px;color:var(--muted);max-width:60ch;">This dimension limits confidence more than any other. Improving it moves more revenue into the supported column than any single deal action. See the <a class="link-underline" href="diagnostic.html">full diagnostic</a> for methodology and per-deal breakdowns.</p>
+  <div class="stack" style="margin-top:20px;">
+    <div>
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+    <span style="font-size:12.5px;">Timing & Close Integrity</span>
+    <span class="figure" style="font-size:12px;color:var(--muted);">44</span>
+  </div>
+  <div class="meter-track" style="margin-top:4px;">
+    <div class="meter-fill bg-risk" style="width:44%;"></div>
+  </div>
+</div>
+<div>
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+    <span style="font-size:12.5px;">Stakeholder Coverage</span>
+    <span class="figure" style="font-size:12px;color:var(--muted);">46</span>
+  </div>
+  <div class="meter-track" style="margin-top:4px;">
+    <div class="meter-fill bg-caution" style="width:46%;"></div>
+  </div>
+</div>
+<div>
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+    <span style="font-size:12.5px;">Decision Evidence</span>
+    <span class="figure" style="font-size:12px;color:var(--muted);">50</span>
+  </div>
+  <div class="meter-track" style="margin-top:4px;">
+    <div class="meter-fill bg-caution" style="width:50%;"></div>
+  </div>
+</div>
+<div>
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+    <span style="font-size:12.5px;">Commercial Evidence</span>
+    <span class="figure" style="font-size:12px;color:var(--muted);">51</span>
+  </div>
+  <div class="meter-track" style="margin-top:4px;">
+    <div class="meter-fill bg-caution" style="width:51%;"></div>
+  </div>
+</div>
+<div>
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+    <span style="font-size:12.5px;">Buyer Access</span>
+    <span class="figure" style="font-size:12px;color:var(--muted);">54</span>
+  </div>
+  <div class="meter-track" style="margin-top:4px;">
+    <div class="meter-fill bg-caution" style="width:54%;"></div>
+  </div>
+</div>
+<div>
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+    <span style="font-size:12.5px;">Problem & Outcome Strength</span>
+    <span class="figure" style="font-size:12px;color:var(--muted);">55</span>
+  </div>
+  <div class="meter-track" style="margin-top:4px;">
+    <div class="meter-fill bg-caution" style="width:55%;"></div>
+  </div>
+</div>
+<div>
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+    <span style="font-size:12.5px;">Buyer Commitment & Momentum</span>
+    <span class="figure" style="font-size:12px;color:var(--muted);">65</span>
+  </div>
+  <div class="meter-track" style="margin-top:4px;">
+    <div class="meter-fill bg-caution" style="width:65%;"></div>
+  </div>
+</div>
+<div>
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+    <span style="font-size:12.5px;">Relationship Strength</span>
+    <span class="figure" style="font-size:12px;color:var(--muted);">73</span>
+  </div>
+  <div class="meter-track" style="margin-top:4px;">
+    <div class="meter-fill bg-supported" style="width:73%;"></div>
+  </div>
+</div>
+<div>
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+    <span style="font-size:12.5px;">Opportunity Reality</span>
+    <span class="figure" style="font-size:12px;color:var(--muted);">77</span>
+  </div>
+  <div class="meter-track" style="margin-top:4px;">
+    <div class="meter-fill bg-supported" style="width:77%;"></div>
+  </div>
+</div>
+  </div>
+</section>
+<section class="panel" style="padding:24px;">
+  <p class="eyebrow">Top risks by revenue exposure</p>
+  <ul class="rule-y" style="list-style:none;margin:12px 0 0;padding:0;">
+    <li style="padding:16px 0;">
+  <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;">
+    <a href="pipeline.html" class="font-display" style="font-size:17px;text-decoration:underline;text-underline-offset:4px;">Northwind Health</a>
+    <span class="figure text-risk" style="font-size:13px;">$2.2M exposed</span>
+  </div>
+  <p style="margin:4px 0 0;font-size:12px;color:var(--muted);">Enterprise expansion — 3 regions</p>
+  <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;">
+    <span class="pill pill-risk">Quality 18</span>
+    <span class="pill pill-risk">Relationship risk High</span>
+    <span class="pill pill-risk">Commitment Low</span>
+    <span class="pill pill-risk">1 contradiction(s)</span>
+  </div>
+  <p style="margin:8px 0 0;font-size:13.5px;">Establish another meaningful stakeholder relationship before increasing forecast confidence.</p>
+</li>
+<li style="padding:16px 0;">
+  <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;">
+    <a href="pipeline.html" class="font-display" style="font-size:17px;text-decoration:underline;text-underline-offset:4px;">Arclight Financial</a>
+    <span class="figure text-risk" style="font-size:13px;">$1.4M exposed</span>
+  </div>
+  <p style="margin:4px 0 0;font-size:12px;color:var(--muted);">Legacy migration programme</p>
+  <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;">
+    <span class="pill pill-risk">Quality 29</span>
+    <span class="pill pill-risk">Relationship risk High</span>
+    <span class="pill pill-risk">Commitment Low</span>
+    <span class="pill pill-risk">2 contradiction(s)</span>
+  </div>
+  <p style="margin:8px 0 0;font-size:13.5px;">Have the buyer walk through their actual approval steps and name each approver.</p>
+</li>
+<li style="padding:16px 0;">
+  <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;">
+    <a href="pipeline.html" class="font-display" style="font-size:17px;text-decoration:underline;text-underline-offset:4px;">Helio Systems</a>
+    <span class="figure text-risk" style="font-size:13px;">$882K exposed</span>
+  </div>
+  <p style="margin:4px 0 0;font-size:12px;color:var(--muted);">Tooling consolidation</p>
+  <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;">
+    <span class="pill pill-risk">Quality 21</span>
+    <span class="pill pill-caution">Relationship risk Medium</span>
+    <span class="pill pill-risk">Commitment Low</span>
+    <span class="pill pill-risk">2 contradiction(s)</span>
+  </div>
+  <p style="margin:8px 0 0;font-size:13.5px;">Establish another meaningful stakeholder relationship before increasing forecast confidence.</p>
+</li>
+<li style="padding:16px 0;">
+  <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;">
+    <a href="pipeline.html" class="font-display" style="font-size:17px;text-decoration:underline;text-underline-offset:4px;">Solstice Media</a>
+    <span class="figure text-risk" style="font-size:13px;">$801K exposed</span>
+  </div>
+  <p style="margin:4px 0 0;font-size:12px;color:var(--muted);">Competitive displacement</p>
+  <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;">
+    <span class="pill pill-risk">Quality 11</span>
+    <span class="pill pill-risk">Relationship risk High</span>
+    <span class="pill pill-risk">Commitment Low</span>
+    <span class="pill pill-risk">1 contradiction(s)</span>
+  </div>
+  <p style="margin:8px 0 0;font-size:13.5px;">Establish another meaningful stakeholder relationship before increasing forecast confidence.</p>
+</li>
+<li style="padding:16px 0;">
+  <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;">
+    <a href="pipeline.html" class="font-display" style="font-size:17px;text-decoration:underline;text-underline-offset:4px;">Brightpath Education</a>
+    <span class="figure text-risk" style="font-size:13px;">$684K exposed</span>
+  </div>
+  <p style="margin:4px 0 0;font-size:12px;color:var(--muted);">Global standardisation</p>
+  <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;">
+    <span class="pill pill-risk">Quality 30</span>
+    <span class="pill pill-caution">Relationship risk Medium</span>
+    <span class="pill pill-risk">Commitment Low</span>
+    
+  </div>
+  <p style="margin:8px 0 0;font-size:13.5px;">Quantify the customer outcome — baseline, target and timeframe — before treating the business case as validated.</p>
+</li>
+  </ul>
+  <a href="actions.html" class="link-underline" style="margin-top:16px;display:inline-block;">Full action queue</a>
+</section>
+</div>
+</div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">Pipeline as evidence, not record. Scores are deterministic: identical inputs always produce identical results. Demo dataset evaluated 26 Aug 2026.</div>
+</footer>
+</body>
+</html>

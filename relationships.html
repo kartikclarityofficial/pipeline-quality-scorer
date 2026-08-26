@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Relationship coverage — Pipeline Quality Scorer™</title>
+<meta name="description" content="Who is actually engaged on each opportunity: mapped stakeholders, champion and economic-buyer status, threading, and staleness."/>
+<meta property="og:title" content="Relationship coverage — Pipeline Quality Scorer™"/>
+<meta property="og:description" content="Who is actually engaged on each opportunity: mapped stakeholders, champion and economic-buyer status, threading, and staleness."/>
+<meta name="theme-color" content="#F6F4ED"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 26 26%22><rect width=%2226%22 height=%2226%22 rx=%224%22 fill=%22%2317150F%22/></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/styles.css"/>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a href="index.html" class="wordmark" aria-label="Pipeline Quality Scorer home">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<rect x="0.5" y="0.5" width="25" height="25" rx="2.5" fill="#17150F" stroke="#DDD6C4"/>
+<path d="M7 19V7h5.4c1.4 0 2.5.35 3.35 1.05.85.7 1.27 1.68 1.27 2.95 0 1.27-.42 2.25-1.27 2.95-.85.7-1.95 1.05-3.35 1.05H9.6V19H7Zm2.6-6.2h2.6c.73 0 1.28-.16 1.66-.48.38-.32.57-.79.57-1.42s-.19-1.1-.57-1.42c-.38-.32-.93-.48-1.66-.48H9.6v3.8Z" fill="#F6F4ED"/>
+</svg>
+      <span class="wordmark-label">Pipeline Quality Scorer<sup>&trade;</sup></span>
+    </a>
+    <nav class="primary" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+<li><a href="pipeline.html">Pipeline</a></li>
+<li><a href="relationships.html" aria-current="page">Relationships</a></li>
+<li><a href="diagnostic.html">Diagnostic</a></li>
+<li><a href="actions.html">Actions</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main>
+<div class="wrap">
+
+<h1 class="page-title">Relationship coverage</h1>
+<p class="page-intro">A deal is not safe because a champion likes you. It is safe when more than one real person, with real authority, is on record.</p>
+
+<div class="grid-lines cols-4" style="margin-top:24px;">
+  <div class="cell"><p class="eyebrow">High relationship risk</p><p class="figure text-risk" style="margin:6px 0 0;font-size:26px;">4 of 10</p><p style="margin:4px 0 0;font-size:12px;color:var(--muted);">Opportunities</p></div>
+  <div class="cell"><p class="eyebrow">Single-threaded</p><p class="figure text-risk" style="margin:6px 0 0;font-size:26px;">3 of 10</p><p style="margin:4px 0 0;font-size:12px;color:var(--muted);">One contact carries the whole deal</p></div>
+  <div class="cell"><p class="eyebrow">Avg. stakeholders mapped</p><p class="figure" style="margin:6px 0 0;font-size:26px;">2.8</p><p style="margin:4px 0 0;font-size:12px;color:var(--muted);">Per opportunity</p></div>
+  <div class="cell"><p class="eyebrow">Unconfirmed economic buyers</p><p class="figure text-caution" style="margin:6px 0 0;font-size:26px;">5 of 10</p><p style="margin:4px 0 0;font-size:12px;color:var(--muted);">Budget authority not verified</p></div>
+</div>
+
+<section class="panel" style="margin-top:24px;padding:24px;">
+<p class="eyebrow">Reading this page</p>
+<p class="font-display" style="margin:8px 0 0;font-size:20px;max-width:70ch;">Coverage is counted, not assumed.</p>
+<p style="margin:10px 0 0;font-size:13.5px;color:var(--muted);max-width:70ch;">A stakeholder only counts as "mapped" if there is a dated interaction on record — an email thread, a call note, a meeting. Champion and economic-buyer status reflect the most recent confirmed evidence, not the rep's read of the relationship. "Single-threaded" means the deal depends on one person who has not yet been triangulated against anyone else in the account.</p>
+</section>
+
+<div class="panel table-scroll" style="margin-top:24px;">
+<table class="data-table" style="min-width:980px;">
+<caption class="sr-only">Relationship coverage by opportunity</caption>
+<thead><tr>
+<th scope="col">Opportunity</th><th scope="col">Relationship risk</th><th scope="col">Stakeholders</th>
+<th scope="col">Champion</th><th scope="col">Economic buyer</th><th scope="col">Threading</th><th scope="col">Last contact</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Northwind Health</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Enterprise expansion — 3 regions</p></td>
+<td><span class="pill pill-risk">High</span></td>
+<td><span style="display:inline-flex;gap:4px;align-items:center;"><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span></span><p class="figure" style="margin:4px 0 0;font-size:11px;color:var(--muted);">1 mapped</p></td>
+<td><span class="pill pill-risk">Unconfirmed</span></td>
+<td><span class="pill pill-risk">No contact</span></td>
+<td><span class="pill pill-risk">Single-threaded</span></td>
+<td style="font-size:12.5px;white-space:nowrap;">19 days ago</td>
+</tr>
+<tr>
+<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Arclight Financial</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Legacy migration programme</p></td>
+<td><span class="pill pill-risk">High</span></td>
+<td><span style="display:inline-flex;gap:4px;align-items:center;"><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span></span><p class="figure" style="margin:4px 0 0;font-size:11px;color:var(--muted);">2 mapped</p></td>
+<td><span class="pill pill-caution">Identified</span></td>
+<td><span class="pill pill-caution">Unconfirmed</span></td>
+<td><span class="pill pill-risk">Single-threaded</span></td>
+<td style="font-size:12.5px;white-space:nowrap;">27 days ago</td>
+</tr>
+<tr>
+<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Helio Systems</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Tooling consolidation</p></td>
+<td><span class="pill pill-caution">Medium</span></td>
+<td><span style="display:inline-flex;gap:4px;align-items:center;"><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span></span><p class="figure" style="margin:4px 0 0;font-size:11px;color:var(--muted);">2 mapped</p></td>
+<td><span class="pill pill-caution">Identified</span></td>
+<td><span class="pill pill-risk">No contact</span></td>
+<td><span class="pill pill-caution">Lightly threaded</span></td>
+<td style="font-size:12.5px;white-space:nowrap;">12 days ago</td>
+</tr>
+<tr>
+<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Solstice Media</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Competitive displacement</p></td>
+<td><span class="pill pill-risk">High</span></td>
+<td><span style="display:inline-flex;gap:4px;align-items:center;"><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span></span><p class="figure" style="margin:4px 0 0;font-size:11px;color:var(--muted);">1 mapped</p></td>
+<td><span class="pill pill-risk">Unconfirmed</span></td>
+<td><span class="pill pill-risk">No contact</span></td>
+<td><span class="pill pill-risk">Single-threaded</span></td>
+<td style="font-size:12.5px;white-space:nowrap;">34 days ago</td>
+</tr>
+<tr>
+<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Brightpath Education</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Global standardisation</p></td>
+<td><span class="pill pill-caution">Medium</span></td>
+<td><span style="display:inline-flex;gap:4px;align-items:center;"><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span></span><p class="figure" style="margin:4px 0 0;font-size:11px;color:var(--muted);">2 mapped</p></td>
+<td><span class="pill pill-caution">Identified</span></td>
+<td><span class="pill pill-caution">Unconfirmed</span></td>
+<td><span class="pill pill-caution">Lightly threaded</span></td>
+<td style="font-size:12.5px;white-space:nowrap;">9 days ago</td>
+</tr>
+<tr>
+<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Orrery Bank</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Security programme extension</p></td>
+<td><span class="pill pill-caution">Medium</span></td>
+<td><span style="display:inline-flex;gap:4px;align-items:center;"><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span></span><p class="figure" style="margin:4px 0 0;font-size:11px;color:var(--muted);">4 mapped</p></td>
+<td><span class="pill pill-supported">Confirmed</span></td>
+<td><span class="pill pill-supported">Confirmed</span></td>
+<td><span class="pill pill-supported">Multi-threaded</span></td>
+<td style="font-size:12.5px;white-space:nowrap;">4 days ago</td>
+</tr>
+<tr>
+<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Kestrel Utilities</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Field operations pilot conversion</p></td>
+<td><span class="pill pill-risk">High</span></td>
+<td><span style="display:inline-flex;gap:4px;align-items:center;"><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span></span><p class="figure" style="margin:4px 0 0;font-size:11px;color:var(--muted);">3 mapped</p></td>
+<td><span class="pill pill-caution">Recently changed</span></td>
+<td><span class="pill pill-supported">Confirmed</span></td>
+<td><span class="pill pill-supported">Multi-threaded</span></td>
+<td style="font-size:12.5px;white-space:nowrap;">6 days ago</td>
+</tr>
+<tr>
+<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Vantage Retail Group</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Analytics rollout — commercial teams</p></td>
+<td><span class="pill pill-supported">Low</span></td>
+<td><span style="display:inline-flex;gap:4px;align-items:center;"><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span></span><p class="figure" style="margin:4px 0 0;font-size:11px;color:var(--muted);">4 mapped</p></td>
+<td><span class="pill pill-supported">Confirmed</span></td>
+<td><span class="pill pill-supported">Confirmed</span></td>
+<td><span class="pill pill-supported">Multi-threaded</span></td>
+<td style="font-size:12.5px;white-space:nowrap;">3 days ago</td>
+</tr>
+<tr>
+<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Meridian Logistics</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Revenue platform consolidation</p></td>
+<td><span class="pill pill-supported">Low</span></td>
+<td><span style="display:inline-flex;gap:4px;align-items:center;"><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span></span><p class="figure" style="margin:4px 0 0;font-size:11px;color:var(--muted);">5 mapped</p></td>
+<td><span class="pill pill-supported">Confirmed</span></td>
+<td><span class="pill pill-supported">Confirmed</span></td>
+<td><span class="pill pill-supported">Multi-threaded</span></td>
+<td style="font-size:12.5px;white-space:nowrap;">2 days ago</td>
+</tr>
+<tr>
+<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Castellan Manufacturing</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Platform renewal + analytics module</p></td>
+<td><span class="pill pill-supported">Low</span></td>
+<td><span style="display:inline-flex;gap:4px;align-items:center;"><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--rule);display:inline-block;"></span></span><p class="figure" style="margin:4px 0 0;font-size:11px;color:var(--muted);">4 mapped</p></td>
+<td><span class="pill pill-supported">Confirmed</span></td>
+<td><span class="pill pill-supported">Confirmed</span></td>
+<td><span class="pill pill-supported">Multi-threaded</span></td>
+<td style="font-size:12.5px;white-space:nowrap;">5 days ago</td>
+</tr>
+</tbody>
+</table>
+</div>
+<a href="diagnostic.html" class="link-underline" style="margin-top:16px;display:inline-block;">See how relationship strength feeds the score →</a>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">Pipeline as evidence, not record. Scores are deterministic: identical inputs always produce identical results. Demo dataset evaluated 26 Aug 2026.</div>
+</footer>
+</body>
+</html>
