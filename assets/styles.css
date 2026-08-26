@@ -1,0 +1,141 @@
+/* Pipeline Quality Scorer — Design system and site styles
+   Created: 26 Aug 2026
+   Purpose: Provide a coherent, premium design system and fix missing CSS so GitHub Pages renders correctly
+*/
+:root{
+  --bg:#FBFAF7; /* soft warm background */
+  --panel:#FFFFFF;
+  --muted:#74746e;
+  --ink:#17150F;
+  --rule:#E6E2DA;
+  --supported:#14684A; /* deep green */
+  --risk:#A12B2B; /* deep red */
+  --caution:#B7791F; /* amber */
+  --supported-weak:#2F855A;
+  --focus: #2B6CB0;
+  --max-width:1100px;
+}
+
+/* Global reset (light) */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-family: "Public Sans", Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  line-height:1.45;
+  font-size:15px;
+}
+
+a{color:inherit;text-decoration:none}
+a:focus{outline:3px solid color-mix(in srgb, var(--focus) 20%, white);outline-offset:3px}
+
+.wrap{max-width:var(--max-width);margin:0 auto;padding:18px}
+
+/* Header */
+.site-header{border-bottom:1px solid var(--rule);background:transparent}
+.header-row{display:flex;align-items:center;gap:18px;justify-content:space-between}
+.wordmark{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.wordmark svg{flex-shrink:0}
+.wordmark-label{font-weight:600;font-size:16px;letter-spacing:0.1px}
+
+.primary ul{margin:0;padding:0;display:flex;gap:12px;align-items:center;list-style:none}
+.primary a{color:var(--muted);padding:10px 12px;border-radius:8px;font-weight:600;font-size:14px}
+.primary a[aria-current="page"], .primary a:hover{color:var(--ink);background:rgba(23,21,15,0.04)}
+
+/* Page title */
+.page-title{font-family: 'Newsreader','Georgia',serif;font-weight:600;margin:18px 0 6px;font-size:28px;color:var(--ink)}
+.page-intro{margin:0;color:var(--muted);max-width:70ch}
+
+/* Grid helpers */
+.grid-lines{display:grid;gap:18px}
+.grid-lines.cols-3{grid-template-columns:repeat(3,1fr)}
+.grid-lines.cols-4{grid-template-columns:repeat(4,1fr)}
+.cell{background:transparent;padding:8px}
+.eyebrow{margin:0;color:var(--muted);font-size:12px;font-weight:600}
+.figure{margin:6px 0 0;font-weight:700;color:var(--ink)}
+.font-display{font-weight:600}
+
+/* Panels */
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:12px;box-shadow:0 6px 18px rgba(15,12,8,0.04);padding:18px}
+.rule-top{border-top:1px solid var(--rule)}
+.rule-y > * + *{border-top:1px solid var(--rule)}
+
+/* Meter */
+.meter-track-lg{height:12px;border-radius:999px;background:linear-gradient(90deg,rgba(20,104,74,0.12),rgba(161,43,43,0.06))}
+.meter-track{height:8px;background:#f3f2ef;border-radius:6px;overflow:hidden}
+.meter-fill{height:100%;background:var(--supported);border-radius:6px}
+.meter-fill.bg-risk{background:var(--risk)}
+.meter-fill.bg-caution{background:var(--caution)}
+.meter-fill.bg-supported{background:var(--supported)}
+
+/* Pills */
+.pill{display:inline-block;padding:6px 8px;border-radius:999px;font-weight:700;font-size:12px;color:white}
+.pill-risk{background:var(--risk)}
+.pill-caution{background:var(--caution)}
+.pill-supported{background:var(--supported-weak)}
+
+/* Text utility */
+.text-supported{color:var(--supported-weak)}
+.text-risk{color:var(--risk)}
+.text-caution{color:var(--caution)}
+
+/* Buttons & links */
+.btn-ink{color:var(--ink);border-bottom:1px solid transparent;padding:8px 12px;border-radius:8px;font-weight:600}
+.btn-ink:hover{background:rgba(23,21,15,0.03)}
+.link-underline{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+
+/* Table styling */
+.table-scroll{overflow:auto}
+.data-table{width:100%;border-collapse:collapse;background:transparent}
+.data-table th{position:sticky;top:0;background:var(--panel);padding:12px 14px;text-align:left;font-weight:700;font-size:13px;border-bottom:1px solid var(--rule)}
+.data-table td{padding:12px 14px;border-bottom:1px solid rgba(226,226,226,0.5);vertical-align:middle}
+.data-table caption{font-size:13px}
+
+/* Accessibility helpers */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Footer */
+.site-footer{padding:18px 0;color:var(--muted);font-size:13px;border-top:1px solid var(--rule);text-align:center}
+
+/* Responsive */
+@media (max-width:920px){
+  .grid-lines.cols-3{grid-template-columns:1fr}
+  .grid-lines.cols-4{grid-template-columns:1fr 1fr}
+  .wrap{padding:14px}
+  .page-title{font-size:22px}
+  .wordmark-label{display:none}
+  .primary ul{gap:6px}
+  .primary a{padding:8px}
+}
+@media (max-width:520px){
+  .grid-lines.cols-4{grid-template-columns:1fr}
+  .primary ul{flex-wrap:wrap}
+  .data-table{font-size:13px}
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important}
+}
+
+/* Small interactive affordances */
+a.font-display:focus, a.font-display:hover{outline:none;text-decoration:underline}
+
+/* Ensure inline underlines look intentional */
+a[style*="text-decoration:underline"]{color:var(--ink)}
+
+/* Prevent horizontal overflow from long tables */
+.data-table td{word-break:break-word}
+
+/* Fix default serif from Google font fallback when link is clipped — force system sans for headings as well */
+h1,h2,h3,h4{font-family: "Newsreader", Georgia, serif}
+
+/* Utility for compact stacks used in panels */
+.stack > div{margin-bottom:12px}
+
+/* Make focus states visible for keyboard users */
+button:focus,a:focus{box-shadow:0 0 0 3px color-mix(in srgb, var(--focus) 18%, white);border-radius:6px}
