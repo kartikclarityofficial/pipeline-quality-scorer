@@ -43,17 +43,37 @@
 <h1 class="page-title">Relationship coverage</h1>
 <p class="page-intro">A deal is not safe because a champion likes you. It is safe when more than one real person, with real authority, is on record. <strong>(DEMO DATA)</strong></p>
 
+<!-- Updated: add explicit element IDs required by the population script. -->
 <div class="grid-lines cols-4" style="margin-top:24px;">
-  <div class="cell"><p class="eyebrow">High relationship risk</p><p class="figure text-risk" style="margin:6px 0 0;font-size:26px;">4 of 10</p><p style="margin:4px 0 0;font-size:12px;color:var(--muted);">...<strong>(DEMO DATA)</strong></p></div>
-  <div class="cell"><p class="eyebrow">Single-threaded</p><p class="figure text-risk" style="margin:6px 0 0;font-size:26px;">3 of 10</p><p style="margin:4px 0 0;font-size:12px;color:var(--muted);">...<strong>(DEMO DATA)</strong></p></div>
-  <div class="cell"><p class="eyebrow">Avg. stakeholders mapped</p><p class="figure" style="margin:6px 0 0;font-size:26px;">2.8</p><p style="margin:4px 0 0;font-size:12px;color:var(--muted);">Per opportunity <strong>(DEMO DATA)</strong></p></div>
-  <div class="cell"><p class="eyebrow">Unconfirmed economic buyers</p><p class="figure text-caution" style="margin:6px 0 0;font-size:26px;">5 of 10</p><p style="margin:4px 0 0;font-size:12px;color:var(--muted);">... <strong>(DEMO DATA)</strong></p></div>
+  <div class="cell">
+    <p class="eyebrow">High relationship risk</p>
+    <p id="rel-high-risk" class="figure text-risk" style="margin:6px 0 0;font-size:26px;">Not assessed</p>
+    <p style="margin:4px 0 0;font-size:12px;color:var(--muted);">Portfolio-level heuristic</p>
+  </div>
+
+  <div class="cell">
+    <p class="eyebrow">Single-threaded</p>
+    <p id="rel-single-thread" class="figure text-risk" style="margin:6px 0 0;font-size:26px;">Not assessed</p>
+    <p style="margin:4px 0 0;font-size:12px;color:var(--muted);">Deals with limited stakeholder coverage</p>
+  </div>
+
+  <div class="cell">
+    <p class="eyebrow">Avg. stakeholders mapped</p>
+    <p id="rel-avg-stakeholders" class="figure" style="margin:6px 0 0;font-size:26px;">—</p>
+    <p style="margin:4px 0 0;font-size:12px;color:var(--muted);">Per active opportunity</p>
+  </div>
+
+  <div class="cell">
+    <p class="eyebrow">Unconfirmed economic buyers</p>
+    <p id="rel-unconfirmed" class="figure text-caution" style="margin:6px 0 0;font-size:26px;">Not assessed</p>
+    <p style="margin:4px 0 0;font-size:12px;color:var(--muted);">Unconfirmed economic buyer count</p>
+  </div>
 </div>
 
 <section class="panel" style="margin-top:24px;padding:24px;">
 <p class="eyebrow">Reading this page</p>
 <p class="font-display" style="margin:8px 0 0;font-size:20px;max-width:70ch;">Coverage is counted, not assumed.</p>
-<p style="margin:10px 0 0;font-size:13.5px;color:var(--muted);max-width:70ch;">A stakeholder only counts as "mapped" if there is a dated interaction on record — an email thread, a call note, a meeting record. <strong>(DEMO DATA)</strong></p>
+<p style="margin:10px 0 0;font-size:13.5px;color:var(--muted);max-width:70ch;">A stakeholder only counts as "mapped" if there is a dated interaction on record — an email thread, a call note, a meeting summary. This page reads the saved assessment and derives portfolio-level heuristics where possible. If no saved assessment exists, the page remains in a NOT ASSESSED state to avoid inventing data.</p>
 </section>
 
 <div class="panel table-scroll" style="margin-top:24px;">
