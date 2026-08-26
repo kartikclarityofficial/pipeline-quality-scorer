@@ -1,6 +1,7 @@
 /* Pipeline Quality Scorer — Design system and site styles
    Created: 26 Aug 2026
    Purpose: Provide a coherent, premium design system and fix missing CSS so GitHub Pages renders correctly
+   Hardened for assessment UI: improved score visibility, chips, unanswered state, progress, toasts, xray responsiveness
 */
 :root{
   --bg:#FBFAF7; /* soft warm background */
@@ -14,6 +15,7 @@
   --supported-weak:#2F855A;
   --focus: #2B6CB0;
   --max-width:1100px;
+  --toast-bg: #17150F;
 }
 
 /* Global reset (light) */
@@ -89,7 +91,7 @@ a:focus{outline:3px solid color-mix(in srgb, var(--focus) 20%, white);outline-of
 /* Meter */
 .meter-track-lg{height:12px;border-radius:999px;background:linear-gradient(90deg,rgba(20,104,74,0.12),rgba(161,43,43,0.06))}
 .meter-track{height:8px;background:#f3f2ef;border-radius:6px;overflow:hidden}
-.meter-fill{height:100%;background:var(--supported);border-radius:6px}
+.meter-fill{height:100%;background:var(--supported);border-radius:6px;transition:width 280ms ease}
 .meter-fill.bg-risk{background:var(--risk)}
 .meter-fill.bg-caution{background:var(--caution)}
 .meter-fill.bg-supported{background:var(--supported)}
@@ -153,7 +155,6 @@ a:focus{outline:3px solid color-mix(in srgb, var(--focus) 20%, white);outline-of
 /* Small interactive affordances */
 a.font-display:focus, a.font-display:hover{outline:none;text-decoration:underline}
 
-/* Ensure inline underlines look intentional */
 a[style*="text-decoration:underline"]{color:var(--ink)}
 
 /* Prevent horizontal overflow from long tables */
@@ -171,26 +172,33 @@ button:focus,a:focus{box-shadow:0 0 0 3px color-mix(in srgb, var(--focus) 18%, w
 .dim-label{font-weight:700;margin-bottom:8px}
 .dim-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .dim-range{flex:1;min-width:120px}
-.dim-range.unanswered{opacity:0.65}
+.dim-range.unanswered{opacity:0.45}
 .dim-number{width:84px;padding:8px;border-radius:8px;border:1px solid var(--rule)}
 .not-assessed{font-size:12px;color:var(--muted);margin-left:6px}
 .dim-chips{display:flex;gap:6px;margin-left:8px}
-.chip{background:transparent;border:1px solid var(--rule);padding:6px 8px;border-radius:8px;font-weight:700;cursor:pointer}
+.chip{background:transparent;border:1px solid var(--rule);padding:6px 8px;border-radius:8px;font-weight:700;cursor:pointer;min-height:36px}
 .chip.selected{background:var(--focus);color:white;border-color:var(--focus)}
 .chip:focus{outline:3px solid color-mix(in srgb,var(--focus) 18%, white);outline-offset:2px}
 .dim-action{color:var(--muted)}
 
 .result-card{display:flex;flex-direction:row;gap:12px;align-items:center}
 .result-card .result-score{display:flex;flex-direction:column;align-items:flex-end}
-.score-number{font-size:20px;font-weight:800}
+.score-number{font-size:22px;font-weight:800;color:var(--ink)}
 .score-label{font-size:13px;font-weight:700;color:var(--muted)}
+.score-confidence{margin-top:6px;font-size:12px;font-weight:700}
+.score-confidence.badge{display:inline-block;padding:6px 8px;border-radius:8px;color:white}
+.score-confidence.high{background:var(--supported);}
+.score-confidence.moderate{background:var(--focus);}
+.score-confidence.low{background:var(--caution);}
+.score-confidence.very-low{background:var(--risk);}
+
 .result-values{font-size:13px}
 .result-card.small{padding:8px;border:1px solid var(--rule);border-radius:8px;background:var(--panel)}
 
-.pqs-toast{position:fixed;left:50%;transform:translateX(-50%) translateY(12px);bottom:18px;background:var(--ink);color:white;padding:10px 14px;border-radius:8px;opacity:0;transition:all 220ms ease;z-index:9999}
+.pqs-toast{position:fixed;left:50%;transform:translateX(-50%) translateY(12px);bottom:18px;background:var(--toast-bg);color:white;padding:10px 14px;border-radius:8px;opacity:0;transition:all 220ms ease;z-index:9999}
 .pqs-toast.visible{opacity:1;transform:translateX(-50%) translateY(0)}
 
-.xray-panel{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:12px}
+.xray-panel{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:12px;max-height:50vh;overflow:auto}
 
 /* Accessibility: ensure touch targets */
 button, .chip, .cta-primary{min-height:36px}
@@ -206,3 +214,22 @@ form#scoring-form{width:100%;box-sizing:border-box}
 
 /* Ensure no horizontal overflow */
 html,body{overflow-x:hidden}
+
+/* Responsive tweaks for specific target widths */
+@media (max-width:430px){
+  .wrap{padding:12px}
+  .result-card .result-score{align-items:flex-end}
+  .score-number{font-size:20px}
+  .dim-controls{flex-direction:column;align-items:stretch}
+  .dim-chips{margin-left:0}
+}
+@media (min-width:431px) and (max-width:768px){
+  .hero{grid-template-columns:1fr}
+  .result-card{justify-content:flex-end}
+}
+@media (min-width:769px) and (max-width:1024px){
+  .hero{grid-template-columns:1fr 360px}
+}
+@media (min-width:1280px){
+  .wrap{max-width:1300px}
+}
