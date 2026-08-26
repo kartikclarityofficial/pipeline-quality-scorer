@@ -245,19 +245,18 @@
 
     if(score === null){
       // show incomplete state
-      scoreNumEl.textContent = 'Assessment incomplete';
-      const answered = getAnsweredDimensions().length;
-      scoreLabelEl.textContent = `${answered} of 9 dimensions completed`;
-      evidenceSupportedEl.textContent = '—';
-      requiresValidationEl.textContent = '—';
+      if(scoreNumEl) scoreNumEl.textContent = 'Assessment incomplete';
+      if(scoreLabelEl) scoreLabelEl.textContent = `${getAnsweredDimensions().length} of 9 dimensions completed`;
+      if(evidenceSupportedEl) evidenceSupportedEl.textContent = '—';
+      if(requiresValidationEl) requiresValidationEl.textContent = '—';
     } else {
-      scoreNumEl.textContent = score + ' / 100';
-      scoreLabelEl.textContent = summary.label;
+      if(scoreNumEl) scoreNumEl.textContent = score + ' / 100';
+      if(scoreLabelEl) scoreLabelEl.textContent = summary.label;
       const pv = state.pipelineValue || 0;
       const ev = computeEvidenceSupported(pv, score);
       const req = computeRequiresValidation(pv, ev);
-      evidenceSupportedEl.textContent = fmtCurrency(ev);
-      requiresValidationEl.textContent = fmtCurrency(req);
+      if(evidenceSupportedEl) evidenceSupportedEl.textContent = fmtCurrency(ev);
+      if(requiresValidationEl) requiresValidationEl.textContent = fmtCurrency(req);
       state.lastResult = {score, label:summary.label, evidenceSupported:ev, requiresValidation:req};
     }
   }
