@@ -43,14 +43,40 @@
 <h1 class="page-title">Pipeline inspection</h1>
 <p class="page-intro">Ordered by diagnostic importance — revenue exposed, then weakest evidence. Deal size does not move an opportunity up this list. <strong>(DEMO DATA)</strong></p>
 
-<div class="grid-lines cols-3" style="margin-top:24px;">
-  <div class="cell"><p class="eyebrow">Reported</p><p class="figure" style="margin:4px 0 0;font-size:22px;">$11.1M</p></div>
-  <div class="cell"><p class="eyebrow">Evidence-supported</p><p class="figure text-supported" style="margin:4px 0 0;font-size:22px;">$5.1M</p></div>
-  <div class="cell"><p class="eyebrow">Requires validation</p><p class="figure text-risk" style="margin:4px 0 0;font-size:22px;">$6.0M</p></div>
-</div>
+<section class="panel" style="margin-top:18px;">
+  <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+    <div style="flex:1;min-width:220px;">
+      <p class="eyebrow">Reported pipeline</p>
+      <p id="reported-pipeline" class="figure">$11.1M <span style="font-weight:600;color:var(--muted);">(DEMO DATA)</span></p>
+    </div>
+    <div style="flex:1;min-width:220px;">
+      <p class="eyebrow">Evidence-supported</p>
+      <p id="evidence-supported" class="figure text-supported">—</p>
+    </div>
+    <div style="flex:1;min-width:220px;">
+      <p class="eyebrow">Requires validation</p>
+      <p id="requires-validation" class="figure text-risk">—</p>
+    </div>
+    <div style="flex-basis:100%;margin-top:8px;">
+      <p class="eyebrow" style="margin:0 0 6px 0;">Pipeline health</p>
+      <div class="meter-track-lg">
+        <div id="pipeline-health-fill" class="meter-fill bg-caution" style="width:0%"></div>
+      </div>
+      <p id="pipeline-health-label" class="eyebrow" style="margin-top:8px;color:var(--muted);">Not assessed · complete a scorer on the Dashboard to evaluate</p>
+    </div>
+  </div>
+</section>
 
-<div class="panel table-scroll" style="margin-top:24px;">
-<table class="data-table" style="min-width:1050px;">
+<section class="panel" style="margin-top:18px;">
+  <p class="eyebrow">Weakest constraints</p>
+  <ul id="weakest-list" style="margin:12px 0 0 0;padding:0;list-style:none;">
+    <li style="padding:10px 0;border-top:1px solid var(--rule);">No diagnostics available — open the assessment on the Dashboard to evaluate. <strong>(DEMO DATA)</strong></li>
+  </ul>
+  <p style="margin-top:12px;color:var(--muted);font-size:13px;">Recommended next actions are generated from the diagnostic. Run the scorer to see prioritized actions.</p>
+</section>
+
+<section class="panel table-scroll" style="margin-top:18px;">
+<table class="data-table" style="min-width:980px;">
 <caption class="sr-only">Opportunities with quality, confidence and revenue exposure</caption>
 <thead><tr>
 <th scope="col">Opportunity</th><th scope="col">Amount</th><th scope="col">Stage</th><th scope="col">Quality</th>
@@ -58,16 +84,82 @@
 <th scope="col">Commitment</th><th scope="col">Close integrity</th><th scope="col">Exposure</th><th scope="col">Next action</th>
 </tr></thead>
 <tbody>
-<!-- demo rows preserved -->
+<tr><td><a href="index.html">Demo Opportunity — Helio Systems</a></td><td>$882,000 <span style="color:var(--muted);font-size:12px;">(DEMO)</span></td><td>Negotiation</td><td>21 / 100</td><td>24 / 100</td><td>30 / 100</td><td>High</td><td>Low</td><td>44 / 100</td><td>$882K</td><td>Map stakeholders (see Actions)</td></tr>
+<!-- keep demo rows minimal and clearly labeled -->
 </tbody>
 </table>
-</div>
+</section>
+
 <p style="margin-top:16px;font-size:12px;color:var(--muted);">Reported $11.1M = evidence-supported $5.1M + requires validation $6.0M. <strong>(DEMO DATA)</strong></p>
+
+<div style="margin-top:18px;display:flex;gap:8px;flex-wrap:wrap;">
+  <a href="index.html" class="btn-ink">Run assessment</a>
+  <a href="actions.html" class="btn-ink">See prioritized actions</a>
+  <a href="diagnostic.html" class="btn-ink">Open diagnostic</a>
+</div>
+
 </div>
 </main>
 <footer class="site-footer">
-  <div class="wrap">Pipeline as evidence, not record. Scores are deterministic: identical inputs always produce identical results. Demo dataset evaluated 26 Aug 2026.</div>
+  <div class="wrap">Your assessment runs locally in your browser. No opportunity data is sent to a server. · Pipeline as evidence, not record. Demo dataset evaluated 26 Aug 2026.</div>
 </footer>
+<script>
+// Populate read-only computed fields from stored state if available
+(function(){
+  try{
+    const raw = localStorage.getItem('pqs-assessment-v1');
+    if(!raw) return;
+    const parsed = JSON.parse(raw);
+    if(!parsed) return;
+    const pipelineValue = parsed.pipelineValue;
+    const dims = parsed.dims || {};
+    const reportedEl = document.getElementById('reported-pipeline');
+    const evEl = document.getElementById('evidence-supported');
+    const reqEl = document.getElementById('requires-validation');
+    const healthFill = document.getElementById('pipeline-health-fill');
+    const healthLabel = document.getElementById('pipeline-health-label');
+    const weakestList = document.getElementById('weakest-list');
+    // safe parsing
+    const pv = (typeof pipelineValue === 'number')? pipelineValue : (typeof pipelineValue === 'string' && pipelineValue.trim()!==''? Number(pipelineValue.replace(/[^0-9.-]+/g,'')) : null);
+    if(pv && !isNaN(pv) && isFinite(pv)){
+      reportedEl.textContent = pv.toLocaleString(undefined,{style:'currency',currency:'USD',maximumFractionDigits:0});
+    }
+    // compute score only if all dims present
+    const dimKeys = ['timing','decision','economic','stakeholders','event','nextstep','engagement','fit','evidence'];
+    const values = dimKeys.map(k=>{ const v = dims[k]; return (v && typeof v.value==='number')? v.value : null; });
+    const answered = values.filter(v=>typeof v==='number');
+    if(answered.length === 9){
+      const avg = Math.round(answered.reduce((s,x)=>s+x,0)/9);
+      const evidenceSupported = Math.round((pv||0)*avg/100);
+      const requires = Math.max(0, Math.round((pv||0)-evidenceSupported));
+      evEl.textContent = evidenceSupported.toLocaleString(undefined,{style:'currency',currency:'USD',maximumFractionDigits:0});
+      reqEl.textContent = requires.toLocaleString(undefined,{style:'currency',currency:'USD',maximumFractionDigits:0});
+      const pct = Math.round((answered.length/9)*100);
+      if(healthFill) healthFill.style.width = pct + '%';
+      if(healthLabel) healthLabel.textContent = `${answered.length} of 9 dimensions assessed · score ${avg}/100`;
+      // weakest constraints
+      const pairs = dimKeys.map((k,i)=>({key:k,value:values[i]})).filter(p=>typeof p.value==='number');
+      pairs.sort((a,b)=>a.value-b.value);
+      weakestList.innerHTML = '';
+      pairs.slice(0,3).forEach(p=>{
+        const li = document.createElement('li');
+        li.style.padding='10px 0'; li.style.borderTop='1px solid var(--rule)';
+        li.textContent = `${p.key}: ${p.value}/100 — Recommended: ${p.key === 'stakeholders' ? 'Map additional stakeholders and confirm economic buyer' : 'Gather direct buyer evidence and next-step commitment'}`;
+        weakestList.appendChild(li);
+      });
+    } else {
+      // show not assessed
+      evEl.textContent = '—'; reqEl.textContent = '—';
+      if(healthFill) healthFill.style.width = '0%';
+      if(healthLabel) healthLabel.textContent = 'Not assessed · complete a scorer on the Dashboard to evaluate';
+      weakestList.innerHTML = '<li style="padding:10px 0;border-top:1px solid var(--rule);">No diagnostics available — open the assessment on the Dashboard to evaluate. <strong>(DEMO DATA)</strong></li>';
+    }
+  }catch(e){
+    // silently fail and leave DEMO DATA
+    console.warn('Pipeline page: could not read assessment state',e);
+  }
+})();
+</script>
 <script src="assets/script.js" defer></script>
 </body>
 </html>
