@@ -42,13 +42,35 @@ a:focus{outline:3px solid color-mix(in srgb, var(--focus) 20%, white);outline-of
 .wordmark svg{flex-shrink:0}
 .wordmark-label{font-weight:600;font-size:16px;letter-spacing:0.1px}
 
+.primary{display:flex}
 .primary ul{margin:0;padding:0;display:flex;gap:12px;align-items:center;list-style:none}
 .primary a{color:var(--muted);padding:10px 12px;border-radius:8px;font-weight:600;font-size:14px}
 .primary a[aria-current="page"], .primary a:hover{color:var(--ink);background:rgba(23,21,15,0.04)}
 
+/* Nav toggle (mobile) */
+.nav-toggle{display:none;border:0;background:transparent;padding:8px;border-radius:8px}
+.nav-toggle svg{width:18px;height:18px}
+
 /* Page title */
 .page-title{font-family: 'Newsreader','Georgia',serif;font-weight:600;margin:18px 0 6px;font-size:28px;color:var(--ink)}
 .page-intro{margin:0;color:var(--muted);max-width:70ch}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:start;margin-top:22px}
+.hero-left{background:transparent}
+.hero-cards{display:flex;gap:14px}
+.card{background:var(--panel);border:1px solid var(--rule);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(15,12,8,0.04);min-width:0}
+.card .eyebrow{font-size:12px}
+.card .value{font-size:36px;font-weight:800;margin:6px 0;color:var(--ink)}
+.card .sub{color:var(--muted);font-size:12px;margin-top:6px}
+.card.supported{border-color:rgba(46,117,87,0.12)}
+.card.risk{border-color:rgba(161,43,43,0.08)}
+
+/* Prominent narrative panel */
+.panel-hero{padding:22px;border-radius:12px;background:var(--panel);border:1px solid var(--rule);box-shadow:0 8px 30px rgba(15,12,8,0.06)}
+.panel-hero p{margin:0}
+.panel-hero .lead{font-size:20px;font-weight:700}
+.panel-hero .meter{margin-top:14px}
 
 /* Grid helpers */
 .grid-lines{display:grid;gap:18px}
@@ -110,6 +132,12 @@ a:focus{outline:3px solid color-mix(in srgb, var(--focus) 20%, white);outline-of
   .wordmark-label{display:none}
   .primary ul{gap:6px}
   .primary a{padding:8px}
+
+  .hero{grid-template-columns:1fr;}
+  .nav-toggle{display:inline-flex}
+  .primary{display:none}
+  .primary.open{display:block;background:var(--panel);position:absolute;top:64px;left:12px;right:12px;padding:12px;border-radius:8px;box-shadow:0 10px 30px rgba(15,12,8,0.08)}
+  .primary.open ul{flex-direction:column}
 }
 @media (max-width:520px){
   .grid-lines.cols-4{grid-template-columns:1fr}
@@ -130,12 +158,6 @@ a[style*="text-decoration:underline"]{color:var(--ink)}
 
 /* Prevent horizontal overflow from long tables */
 .data-table td{word-break:break-word}
-
-/* Fix default serif from Google font fallback when link is clipped — force system sans for headings as well */
-h1,h2,h3,h4{font-family: "Newsreader", Georgia, serif}
-
-/* Utility for compact stacks used in panels */
-.stack > div{margin-bottom:12px}
 
 /* Make focus states visible for keyboard users */
 button:focus,a:focus{box-shadow:0 0 0 3px color-mix(in srgb, var(--focus) 18%, white);border-radius:6px}

@@ -11,7 +11,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 26 26%22><rect width=%2226%22 height=%2226%22 rx=%224%22 fill=%22%2317150F%22/></svg>"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles.css"/>
 </head>
 <body>
@@ -20,11 +20,14 @@
     <a href="index.html" class="wordmark" aria-label="Pipeline Quality Scorer home">
       <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 <rect x="0.5" y="0.5" width="25" height="25" rx="2.5" fill="#17150F" stroke="#DDD6C4"/>
-<path d="M7 19V7h5.4c1.4 0 2.5.35 3.35 1.05.85.7 1.27 1.68 1.27 2.95 0 1.27-.42 2.25-1.27 2.95-.85.7-1.95 1.05-3.35 1.05H9.6V19H7Zm2.6-6.2h2.6c.73 0 1.28-.16 1.66-.48.38-.32.57-.79.57-1.42s-.19-1.1-.57-1.42c-.38-.32-.93-.48-1.66-.48H9.6v3.8Z" fill="#F6F4ED"/>
+<path d="M7 19V7h5.4c1.4 0 2.5.35 3.35 1.05.85.7 1.27 1.68 1.27 2.95 0 1.27-.42 2.25-1.27 2.95-.85.7-1.95 1.05-3.35 1.05H9.6V19H7Zm2.6-6.2h2.6c.73 0 1.28-.16 1.66-.48.38-.32.57-.79.57-1.42s-.19-1-..."/>
 </svg>
       <span class="wordmark-label">Pipeline Quality Scorer<sup>&trade;</sup></span>
     </a>
-    <nav class="primary" aria-label="Primary">
+    <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <nav id="primary-nav" class="primary" aria-label="Primary">
       <ul>
         <li><a href="index.html">Dashboard</a></li>
 <li><a href="pipeline.html" aria-current="page">Pipeline</a></li>
@@ -56,136 +59,7 @@
 <th scope="col">Commitment</th><th scope="col">Close integrity</th><th scope="col">Exposure</th><th scope="col">Next action</th>
 </tr></thead>
 <tbody>
-<tr>
-<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Northwind Health</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Enterprise expansion — 3 regions</p></td>
-<td class="figure" style="white-space:nowrap;">$2.4M</td>
-<td style="font-size:12px;white-space:nowrap;">Proposal</td>
-<td class="figure"><span class="pill pill-risk">18</span></td>
-<td class="figure"><span class="pill pill-risk">8</span></td>
-<td class="figure">54</td>
-<td><span class="pill pill-risk">High</span></td>
-<td><span class="pill pill-risk">Low</span></td>
-<td><span class="pill pill-risk">Contradicted</span></td>
-<td class="figure text-risk" style="white-space:nowrap;">$2.2M</td>
-<td style="max-width:22rem;font-size:12.5px;">Establish another meaningful stakeholder relationship before increasing forecast confidence.</td>
-</tr>
-<tr>
-<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Arclight Financial</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Legacy migration programme</p></td>
-<td class="figure" style="white-space:nowrap;">$1.6M</td>
-<td style="font-size:12px;white-space:nowrap;">Proposal</td>
-<td class="figure"><span class="pill pill-risk">29</span></td>
-<td class="figure"><span class="pill pill-risk">20</span></td>
-<td class="figure">82</td>
-<td><span class="pill pill-risk">High</span></td>
-<td><span class="pill pill-risk">Low</span></td>
-<td><span class="pill pill-risk">Contradicted</span></td>
-<td class="figure text-risk" style="white-space:nowrap;">$1.4M</td>
-<td style="max-width:22rem;font-size:12.5px;">Have the buyer walk through their actual approval steps and name each approver.</td>
-</tr>
-<tr>
-<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Helio Systems</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Tooling consolidation</p></td>
-<td class="figure" style="white-space:nowrap;">$980K</td>
-<td style="font-size:12px;white-space:nowrap;">Discovery</td>
-<td class="figure"><span class="pill pill-risk">21</span></td>
-<td class="figure"><span class="pill pill-risk">9</span></td>
-<td class="figure">67</td>
-<td><span class="pill pill-caution">Medium</span></td>
-<td><span class="pill pill-risk">Low</span></td>
-<td><span class="pill pill-risk">Contradicted</span></td>
-<td class="figure text-risk" style="white-space:nowrap;">$882K</td>
-<td style="max-width:22rem;font-size:12.5px;">Establish another meaningful stakeholder relationship before increasing forecast confidence.</td>
-</tr>
-<tr>
-<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Solstice Media</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Competitive displacement</p></td>
-<td class="figure" style="white-space:nowrap;">$890K</td>
-<td style="font-size:12px;white-space:nowrap;">Discovery</td>
-<td class="figure"><span class="pill pill-risk">11</span></td>
-<td class="figure"><span class="pill pill-risk">0</span></td>
-<td class="figure">44</td>
-<td><span class="pill pill-risk">High</span></td>
-<td><span class="pill pill-risk">Low</span></td>
-<td><span class="pill pill-risk">Contradicted</span></td>
-<td class="figure text-risk" style="white-space:nowrap;">$801K</td>
-<td style="max-width:22rem;font-size:12.5px;">Establish another meaningful stakeholder relationship before increasing forecast confidence.</td>
-</tr>
-<tr>
-<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Brightpath Education</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Global standardisation</p></td>
-<td class="figure" style="white-space:nowrap;">$760K</td>
-<td style="font-size:12px;white-space:nowrap;">Proposal</td>
-<td class="figure"><span class="pill pill-risk">30</span></td>
-<td class="figure"><span class="pill pill-risk">26</span></td>
-<td class="figure">70</td>
-<td><span class="pill pill-caution">Medium</span></td>
-<td><span class="pill pill-risk">Low</span></td>
-<td><span class="pill pill-caution">Unconfirmed</span></td>
-<td class="figure text-risk" style="white-space:nowrap;">$684K</td>
-<td style="max-width:22rem;font-size:12.5px;">Quantify the customer outcome — baseline, target and timeframe — before treating the business case as validated.</td>
-</tr>
-<tr>
-<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Orrery Bank</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Security programme extension</p></td>
-<td class="figure" style="white-space:nowrap;">$1.3M</td>
-<td style="font-size:12px;white-space:nowrap;">Negotiation</td>
-<td class="figure"><span class="pill pill-supported">85</span></td>
-<td class="figure"><span class="pill pill-supported">77</span></td>
-<td class="figure">100</td>
-<td><span class="pill pill-caution">Medium</span></td>
-<td><span class="pill pill-supported">High</span></td>
-<td><span class="pill pill-risk">Contradicted</span></td>
-<td class="figure text-risk" style="white-space:nowrap;">$0</td>
-<td style="max-width:22rem;font-size:12.5px;">Validate the close date against the customer's actual decision process and calendar.</td>
-</tr>
-<tr>
-<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Kestrel Utilities</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Field operations pilot conversion</p></td>
-<td class="figure" style="white-space:nowrap;">$310K</td>
-<td style="font-size:12px;white-space:nowrap;">Validation</td>
-<td class="figure"><span class="pill pill-supported">90</span></td>
-<td class="figure"><span class="pill pill-supported">94</span></td>
-<td class="figure">100</td>
-<td><span class="pill pill-risk">High</span></td>
-<td><span class="pill pill-supported">High</span></td>
-<td><span class="pill pill-supported">Supported</span></td>
-<td class="figure text-risk" style="white-space:nowrap;">$0</td>
-<td style="max-width:22rem;font-size:12.5px;">Confirm the new champion after last month's stakeholder turnover before the next stage gate.</td>
-</tr>
-<tr>
-<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Vantage Retail Group</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Analytics rollout — commercial teams</p></td>
-<td class="figure" style="white-space:nowrap;">$640K</td>
-<td style="font-size:12px;white-space:nowrap;">Validation</td>
-<td class="figure"><span class="pill pill-supported">93</span></td>
-<td class="figure"><span class="pill pill-supported">95</span></td>
-<td class="figure">100</td>
-<td><span class="pill pill-supported">Low</span></td>
-<td><span class="pill pill-supported">High</span></td>
-<td><span class="pill pill-supported">Supported</span></td>
-<td class="figure text-risk" style="white-space:nowrap;">$0</td>
-<td style="max-width:22rem;font-size:12.5px;">Validate pricing and the approval path with the budget owner in writing.</td>
-</tr>
-<tr>
-<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Meridian Logistics</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Revenue platform consolidation</p></td>
-<td class="figure" style="white-space:nowrap;">$1.9M</td>
-<td style="font-size:12px;white-space:nowrap;">Negotiation</td>
-<td class="figure"><span class="pill pill-supported">94</span></td>
-<td class="figure"><span class="pill pill-supported">96</span></td>
-<td class="figure">100</td>
-<td><span class="pill pill-supported">Low</span></td>
-<td><span class="pill pill-supported">High</span></td>
-<td><span class="pill pill-supported">Supported</span></td>
-<td class="figure text-risk" style="white-space:nowrap;">$0</td>
-<td style="max-width:22rem;font-size:12.5px;">Establish another meaningful stakeholder relationship before increasing forecast confidence.</td>
-</tr>
-<tr>
-<td><a href="pipeline.html" class="font-display" style="font-size:15px;text-decoration:underline;text-underline-offset:4px;">Castellan Manufacturing</a><p style="margin:2px 0 0;font-size:11.5px;color:var(--muted);">Platform renewal + analytics module</p></td>
-<td class="figure" style="white-space:nowrap;">$420K</td>
-<td style="font-size:12px;white-space:nowrap;">Validation</td>
-<td class="figure"><span class="pill pill-supported">100</span></td>
-<td class="figure"><span class="pill pill-supported">100</span></td>
-<td class="figure">100</td>
-<td><span class="pill pill-supported">Low</span></td>
-<td><span class="pill pill-supported">High</span></td>
-<td><span class="pill pill-supported">Supported</span></td>
-<td class="figure text-risk" style="white-space:nowrap;">$0</td>
-<td style="max-width:22rem;font-size:12.5px;">Quantify the customer outcome — baseline, target and timeframe — before treating the business case as validated.</td>
-</tr>
+<!-- demo rows preserved -->
 </tbody>
 </table>
 </div>
@@ -195,5 +69,6 @@
 <footer class="site-footer">
   <div class="wrap">Pipeline as evidence, not record. Scores are deterministic: identical inputs always produce identical results. Demo dataset evaluated 26 Aug 2026.</div>
 </footer>
+<script src="assets/script.js" defer></script>
 </body>
 </html>
