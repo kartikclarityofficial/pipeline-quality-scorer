@@ -20,7 +20,6 @@
     <a href="index.html" class="wordmark" aria-label="Pipeline Quality Scorer home">
       <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 <rect x="0.5" y="0.5" width="25" height="25" rx="2.5" fill="#17150F" stroke="#DDD6C4"/>
-<path d="M7 19V7h5.4c1.4 0 2.5.35 3.35 1.05.85.7 1.27 1.68 1.27 2.95 0 1.27-.42 2.25-1.27 2.95-.85.7-1.95 1.05-3.35 1.05H9.6V19H7Zm2.6-6.2h2.6c.73 0 1.28-.16 1.66-.48.38-.32.57-.79.57-1.42s-.19-1-..."/>
 </svg>
       <span class="wordmark-label">Pipeline Quality Scorer<sup>&trade;</sup></span>
     </a>
@@ -42,7 +41,7 @@
 <div class="wrap">
 
 <h1 class="page-title">Executive dashboard</h1>
-<p class="page-intro">Know which pipeline deserves to be believed. Every figure below is calculated from opportunity-level evidence.</p>
+<p class="page-intro">Know which pipeline deserves to be believed. Every figure below is calculated from opportunity-level evidence. <strong>(DEMO DATA)</strong></p>
 
 <div class="hero">
   <div class="hero-left">
@@ -89,9 +88,9 @@
         <div id="assessment-desc" class="sr-only">Enter your pipeline information and assess nine evidence dimensions. This runs locally in your browser.</div>
         <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
           <label for="pipeline-value" class="eyebrow">Total pipeline value</label>
-          <input id="pipeline-value" name="pipeline" type="text" inputmode="numeric" placeholder="e.g. 11100000" style="padding:8px;border:1px solid var(--rule);border-radius:8px;" aria-label="Total pipeline value" />
+          <input id="pipeline-value" name="pipeline" type="text" inputmode="numeric" placeholder="e.g. 11100000" style="padding:8px;border:1px solid var(--rule);border-radius:8px;" aria-label="Total pipeline value">
           <label for="opportunity-count" class="eyebrow">Number of active opportunities</label>
-          <input id="opportunity-count" name="opportunities" type="number" min="0" step="1" placeholder="e.g. 50" style="padding:8px;border:1px solid var(--rule);border-radius:8px;" aria-label="Number of active opportunities" />
+          <input id="opportunity-count" name="opportunities" type="number" min="0" step="1" placeholder="e.g. 50" style="padding:8px;border:1px solid var(--rule);border-radius:8px;" aria-label="Number of active opportunities">
 
           <div style="margin-left:auto;display:flex;gap:8px;align-items:center;">
             <button type="button" id="save" class="btn-ink">Save locally</button>
@@ -109,11 +108,13 @@
                   <p class="eyebrow">Find Your Pipeline Quality Score™</p>
                   <p class="sub">9 evidence dimensions. 1 executive signal. No guesswork.</p>
                 </div>
-                <div style="width:140px;text-align:right;">
+                <div style="width:180px;text-align:right;">
                   <div class="result-card" aria-live="polite">
                     <div class="result-score">
                       <div id="score-number" class="score-number">Assessment incomplete</div>
                       <div id="score-label" class="score-label">0 of 9 dimensions completed</div>
+                      <div id="score-confidence" class="score-confidence" aria-hidden="true"></div>
+                      <div id="reported-pipeline" class="sub" style="margin-top:6px;">Reported: —</div>
                     </div>
                   </div>
                 </div>
@@ -140,7 +141,8 @@
                 <div class="sub">Requires validation</div>
                 <div id="requires-validation" class="figure text-risk">—</div>
               </div>
-              <p class="sub" style="margin-top:8px;color:var(--muted);">The estimate is derived from the assessment inputs and runs locally in your browser. This is an evidence-supported estimate, not a guaranteed forecast.</p>
+              <p class="sub" style="margin-top:8px;color:var(--muted);">The estimate is derived from the assessment inputs and runs locally in your browser. This is an evidence-supported estimate for demonstration purposes.</p>
+              <p class="sub" style="margin-top:8px;font-weight:600;">Your assessment runs locally in your browser. No opportunity data is sent to a server.</p>
             </div>
 
           </div>
@@ -166,7 +168,7 @@
     <div class="panel">
       <p class="eyebrow">Pipeline snapshot</p>
       <p class="figure text-caution" style="font-size:28px;margin-top:8px;">50</p>
-      <p class="sub" style="margin-top:8px;">Pipeline quality — primary constraints: Timing & Close Integrity</p>
+      <p class="sub" style="margin-top:8px;">Pipeline quality — primary constraints: Timing & Close Integrity <strong>(DEMO DATA)</strong></p>
     </div>
   </aside>
 </div>
@@ -189,7 +191,6 @@
   </div>
   <p style="margin:8px 0 0;font-size:13.5px;">Establish another meaningful stakeholder relationship before increasing forecast confidence.</p>
 </li>
-<!-- truncated repeated entries omitted for brevity in source but preserved in repo -->
   </ul>
   <a href="actions.html" class="link-underline" style="margin-top:16px;display:inline-block;">Full action queue</a>
 </section>
