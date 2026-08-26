@@ -1,4 +1,4 @@
-// Pipeline Quality Scorer — interactive behavior and scoring engine (hardened)
+// Pipeline Quality Scorer — interactive behavior and scoring engine (hardened, fixes)
 // No external deps. Runs entirely client-side. Designed for GitHub Pages.
 
 (function(){
@@ -37,6 +37,7 @@
 
   function fmtCurrency(n){
     try{
+      if(n === null || n === undefined) return '—';
       const v = Number(n) || 0;
       return v.toLocaleString(undefined,{style:'currency',currency:'USD',maximumFractionDigits:0});
     }catch(e){
@@ -48,7 +49,9 @@
     if(v === null || v === undefined || v === '') return null;
     const s = String(v).trim();
     if(s === '') return null;
-    const n = Number(s.replace(/[^0-9.-]+/g,''));
+    // remove any currency formatting except leading - and dot
+    const cleaned = s.replace(/[^0-9.-]+/g,'');
+    const n = Number(cleaned);
     if(isNaN(n) || !isFinite(n)) return null;
     return n;
   }
@@ -76,14 +79,15 @@
   }
 
   function computeEvidenceSupported(pipelineValue, score){
+    if(pipelineValue === null || score === null) return null;
     const pv = Number(pipelineValue) || 0;
-    if(score === null) return 0;
     const ev = pv * score / 100;
     if(!isFinite(ev) || isNaN(ev)) return 0;
     return Math.max(0, ev);
   }
 
   function computeRequiresValidation(pipelineValue, evidenceSupported){
+    if(pipelineValue === null || evidenceSupported === null) return null;
     const pv = Number(pipelineValue) || 0;
     const req = pv - (Number(evidenceSupported) || 0);
     if(!isFinite(req) || isNaN(req)) return 0;
@@ -198,7 +202,8 @@
       levels.forEach(l=>{
         const b = document.createElement('button'); b.type='button'; b.className='chip'; b.textContent = l.label; b.dataset.val = String(l.v);
         b.title = l.v + ' — quick select';
-        b.addEventListener('click', ()=>{ setDimensionValue(d.key, l.v, true); renderAll(); });
+        b.setAttribute('aria-pressed','false');
+        b.addEventListener('click', ()=>{ setDimensionValue(d.key, l.v, true); renderAll(); scheduleSave(); });
         chips.appendChild(b);
       });
 
@@ -207,14 +212,16 @@
         const v = safeParseNumber(e.target.value);
         setDimensionValue(d.key, v, true);
         renderAll();
+        scheduleSave();
       });
       range.addEventListener('mousedown', ()=>{ /* ensure interaction marks answered */ });
 
       number.addEventListener('change', (e)=>{
         let v = safeParseNumber(e.target.value);
-        if(v === null) { number.value = ''; state.dims[d.key].value = null; state.dims[d.key].touched = false; }
+        if(v === null) { number.value = ''; state.dims[d.key].value = null; state.dims[d.key].touched = true; }
         else { v = clamp(Math.round(v),0,100); number.value = v; setDimensionValue(d.key, v, true); }
         renderAll();
+        scheduleSave();
       });
 
       controlWrap.appendChild(range);
@@ -252,11 +259,11 @@
     } else {
       if(scoreNumEl) scoreNumEl.textContent = score + ' / 100';
       if(scoreLabelEl) scoreLabelEl.textContent = summary.label;
-      const pv = state.pipelineValue || 0;
+      const pv = state.pipelineValue;
       const ev = computeEvidenceSupported(pv, score);
       const req = computeRequiresValidation(pv, ev);
-      if(evidenceSupportedEl) evidenceSupportedEl.textContent = fmtCurrency(ev);
-      if(requiresValidationEl) requiresValidationEl.textContent = fmtCurrency(req);
+      if(evidenceSupportedEl) evidenceSupportedEl.textContent = ev === null ? '—' : fmtCurrency(ev);
+      if(requiresValidationEl) requiresValidationEl.textContent = req === null ? '—' : fmtCurrency(req);
       state.lastResult = {score, label:summary.label, evidenceSupported:ev, requiresValidation:req};
     }
   }
@@ -280,8 +287,7 @@
     const weakest = getWeakestDimensions();
     weakest.forEach(w=>{
       const li = document.createElement('li');
-      const line = document.createElement('div');
-      line.style.display='flex'; line.style.justifyContent='space-between'; line.style.gap='8px';
+      const line = document.createElement('div'); line.style.display='flex'; line.style.justifyContent='space-between'; line.style.gap='8px';
       const left = document.createElement('div'); left.textContent = w.label;
       const right = document.createElement('div'); right.textContent = String(Math.round(w.value));
       line.appendChild(left); line.appendChild(right);
@@ -294,8 +300,8 @@
 
   function updateDimensionInputsFromState(){
     DIMENSIONS.forEach(d =>{
-      const row = document.querySelector('#dim-'+d.key)?.closest('.dim-row');
       const range = document.getElementById('dim-'+d.key);
+      const row = range ? range.closest('.dim-row') : null;
       const number = row ? row.querySelector('.dim-number') : null;
       const notAssessed = row ? row.querySelector('.not-assessed') : null;
       const s = state.dims[d.key];
@@ -303,17 +309,19 @@
         if(typeof s.value === 'number'){
           range.value = s.value;
           range.classList.remove('unanswered');
+          range.setAttribute('aria-valuenow', String(s.value));
         } else {
           // visually indicate unanswered
-          range.value = 50; // position doesn't matter; show overlay
+          range.value = 50; // neutral position
           range.classList.add('unanswered');
+          range.removeAttribute('aria-valuenow');
         }
       }
       if(number){ number.value = typeof s.value === 'number' ? s.value : ''; }
       if(notAssessed){ notAssessed.style.display = (typeof s.value === 'number') ? 'none' : 'inline-block'; }
-      // update selected chips
+      // update selected chips and aria-pressed
       const chips = row ? row.querySelectorAll('.chip') : [];
-      chips.forEach(c=>{ c.classList.toggle('selected', typeof s.value === 'number' && Number(c.dataset.val) === s.value); });
+      chips.forEach(c=>{ const selected = (typeof s.value === 'number' && Number(c.dataset.val) === s.value); c.classList.toggle('selected', selected); c.setAttribute('aria-pressed', selected ? 'true' : 'false'); });
     });
   }
 
@@ -334,7 +342,7 @@
     const score = calculateScore();
     if(score === null){ showToast('Complete all 9 dimensions to copy the result'); return; }
     const summary = classifyScore(score);
-    const pv = state.pipelineValue || 0;
+    const pv = state.pipelineValue;
     const ev = computeEvidenceSupported(pv, score);
     const req = computeRequiresValidation(pv, ev);
     const weakest = getWeakestDimensions()[0] || {label:'—', value:0, action:'—'};
@@ -342,9 +350,9 @@
     const lines = [];
     lines.push(`Pipeline Quality Score™: ${score}/100 — ${summary.label}`);
     lines.push('');
-    lines.push(`Reported Pipeline: ${fmtCurrency(pv)}`);
-    lines.push(`Evidence-supported estimate: ${fmtCurrency(ev)}`);
-    lines.push(`Requires validation: ${fmtCurrency(req)}`);
+    lines.push(`Reported Pipeline: ${pv === null ? '—' : fmtCurrency(pv)}`);
+    lines.push(`Evidence-supported estimate: ${ev === null ? '—' : fmtCurrency(ev)}`);
+    lines.push(`Requires validation: ${req === null ? '—' : fmtCurrency(req)}`);
     lines.push('');
     lines.push(`Top constraint: ${weakest.label} — ${Math.round(weakest.value)}`);
     lines.push('');
@@ -365,7 +373,9 @@
   // X-Ray — uses same canonical scoring for opportunity
   function openXrayPanel(){
     const panel = $('#xray-panel'); if(!panel) return;
-    panel.innerHTML = '';
+    // clear panel safely
+    while(panel.firstChild) panel.removeChild(panel.firstChild);
+
     const title = document.createElement('h3'); title.textContent = 'Opportunity X‑Ray™'; panel.appendChild(title);
     const note = document.createElement('div'); note.className='sub'; note.textContent='Estimate an individual opportunity\'s exposure. This runs locally.'; note.style.marginTop='6px'; panel.appendChild(note);
 
@@ -400,14 +410,19 @@
     const score = clamp(avg,0,100);
     const exposure = Math.max(0, v * (1 - score/100));
     const weakest = DIMENSIONS.map((d,idx)=>({label:d.label,value:vals[idx],action:d.action,order:idx})).sort((a,b)=> a.value !== b.value ? a.value - b.value : a.order - b.order).slice(0,3);
-    const out = $('#xray-output'); out.innerHTML = '';
+    const out = $('#xray-output'); while(out.firstChild) out.removeChild(out.firstChild);
     const card = document.createElement('div'); card.className='result-card small';
     const sn = document.createElement('div'); sn.className='score-number'; sn.textContent = score + ' / 100';
     const sl = document.createElement('div'); sl.className='score-label'; sl.textContent = classifyScore(score).label;
     card.appendChild(sn); card.appendChild(sl);
     out.appendChild(card);
-    const p = document.createElement('div'); p.style.marginTop='8px'; p.innerHTML = `<div>Estimated exposure: <strong>${fmtCurrency(exposure)}</strong></div>`;
-    out.appendChild(p);
+
+    const pDiv = document.createElement('div'); pDiv.style.marginTop='8px';
+    pDiv.appendChild(document.createTextNode('Estimated exposure: '));
+    const strong = document.createElement('strong'); strong.textContent = fmtCurrency(exposure);
+    pDiv.appendChild(strong);
+    out.appendChild(pDiv);
+
     const ol = document.createElement('ol'); ol.style.marginTop='8px'; weakest.forEach(w=>{ const li=document.createElement('li'); li.textContent = `${w.label} — ${w.value}`; ol.appendChild(li); }); out.appendChild(ol);
     const next = document.createElement('div'); next.style.marginTop='8px'; next.textContent = 'Next action: ' + weakest[0].action; out.appendChild(next);
   }
@@ -426,8 +441,8 @@
 
     renderAll();
 
-    const pv = $('#pipeline-value'); if(pv){ pv.addEventListener('change', (e)=>{ state.pipelineValue = safeParseNumber(e.target.value) || 0; renderAll(); scheduleSave(); }); }
-    const oc = $('#opportunity-count'); if(oc){ oc.addEventListener('change', (e)=>{ state.opportunityCount = safeParseNumber(e.target.value) || 0; renderAll(); scheduleSave(); }); }
+    const pv = $('#pipeline-value'); if(pv){ pv.addEventListener('change', (e)=>{ state.pipelineValue = safeParseNumber(e.target.value); renderAll(); scheduleSave(); }); }
+    const oc = $('#opportunity-count'); if(oc){ oc.addEventListener('change', (e)=>{ state.opportunityCount = safeParseNumber(e.target.value); renderAll(); scheduleSave(); }); }
 
     const openBtn = $('#open-assessment'); const assess = $('#assessment');
     if(openBtn && assess){ openBtn.addEventListener('click', ()=>{ const expanded = openBtn.getAttribute('aria-expanded') === 'true'; openBtn.setAttribute('aria-expanded', String(!expanded)); const hidden = assess.getAttribute('aria-hidden') === 'true'; assess.setAttribute('aria-hidden', String(!hidden)); assess.style.display = hidden ? 'block' : 'none'; if(hidden) assess.scrollIntoView({behavior:'smooth'}); }); assess.style.display='none'; }
