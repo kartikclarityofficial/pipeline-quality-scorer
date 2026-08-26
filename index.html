@@ -11,7 +11,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 26 26%22><rect width=%2226%22 height=%2226%22 rx=%224%22 fill=%22%2317150F%22/></svg>"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles.css"/>
 </head>
 <body>
@@ -20,7 +20,7 @@
     <a href="index.html" class="wordmark" aria-label="Pipeline Quality Scorer home">
       <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 <rect x="0.5" y="0.5" width="25" height="25" rx="2.5" fill="#17150F" stroke="#DDD6C4"/>
-<path d="M7 19V7h5.4c1.4 0 2.5.35 3.35 1.05.85.7 1.27 1.68 1.27 2.95 0 1.27-.42 2.25-1.27 2.95-.85.7-1.95 1.05-3.35 1.05H9.6V19H7Zm2.6-6.2h2.6c.73 0 1.28-.16 1.66-.48.38-.32.57-.79.57-1.42s-.19-1-.57-1.32c-.38-.32-.93-.48-1.66-.48H9.6v3.7Z" fill="#DDD6C4"/>
+<path d="M7 19V7h5.4c1.4 0 2.5.35 3.35 1.05.85.7 1.27 1.68 1.27 2.95 0 1.27-.42 2.25-1.27 2.95-.85.7-1.95 1.05-3.35 1.05H9.6V19H7Zm2.6-6.2h2.6c.73 0 1.28-.16 1.66-.48.38-.32.57-.79.57-1.42s-.19-1-..."/>
 </svg>
       <span class="wordmark-label">Pipeline Quality Scorer<sup>&trade;</sup></span>
     </a>
@@ -48,19 +48,19 @@
   <div class="hero-left">
     <div class="hero-cards">
       <div class="card">
-        <p class="eyebrow">Reported pipeline <span class="demo-badge">DEMO DATA</span></p>
-        <p class="value demo-value" id="demo-reported">$11.1M</p>
-        <p class="sub">$11,100,000 — What the CRM records.</p>
+        <p class="eyebrow">Reported pipeline</p>
+        <p class="value">$11.1M</p>
+        <p class="sub">$11,100,000 — What the CRM records. <strong class="sub">(DEMO DATA)</strong></p>
       </div>
       <div class="card supported">
-        <p class="eyebrow">Evidence-supported <span class="demo-badge">DEMO DATA</span></p>
-        <p class="value text-supported" id="demo-supported">$5.1M</p>
-        <p class="sub">$5,133,000 — What the evidence can currently carry.</p>
+        <p class="eyebrow">Evidence-supported</p>
+        <p class="value text-supported">$5.1M</p>
+        <p class="sub">$5,133,000 — What the evidence can currently carry. <strong class="sub">(DEMO DATA)</strong></p>
       </div>
       <div class="card risk">
-        <p class="eyebrow">Requires validation <span class="demo-badge">DEMO DATA</span></p>
-        <p class="value text-risk" id="demo-risk">$6.0M</p>
-        <p class="sub">$5,967,000 — Recorded, not yet supported.</p>
+        <p class="eyebrow">Requires validation</p>
+        <p class="value text-risk">$6.0M</p>
+        <p class="sub">$5,967,000 — Recorded, not yet supported. <strong class="sub">(DEMO DATA)</strong></p>
       </div>
     </div>
 
@@ -74,111 +74,99 @@
           <p class="eyebrow" style="margin-top:10px;">46% supported · 54% requires validation · confidence should not exceed the evidence</p>
           <a href="pipeline.html" class="btn-ink" style="margin-top:12px;display:inline-block;">Why? Trace every dollar</a>
         </div>
+
+        <!-- HERO CTA: opens the interactive assessment -->
+        <div style="margin-top:18px;">
+          <button id="open-assessment" class="cta-primary" aria-expanded="false">Find My Pipeline Quality Score →</button>
+        </div>
+
       </section>
     </div>
 
-    <!-- HERO CTA: prominent, executive-grade -->
-    <div style="margin-top:22px;">
-      <button id="open-assessment" class="cta-primary" aria-expanded="false">Find My Pipeline Quality Score →</button>
-    </div>
+    <!-- Assessment panel: initially hidden; script toggles aria-hidden and display -->
+    <section id="assessment" class="panel assessment" aria-hidden="true" role="region" aria-label="Pipeline Quality Scorer assessment" style="display:none;margin-top:18px;">
+      <form id="scoring-form" aria-describedby="assessment-desc">
+        <div id="assessment-desc" class="sr-only">Enter your pipeline information and assess nine evidence dimensions. This runs locally in your browser.</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+          <label for="pipeline-value" class="eyebrow">Total pipeline value</label>
+          <input id="pipeline-value" name="pipeline" type="text" inputmode="numeric" placeholder="e.g. 11100000" style="padding:8px;border:1px solid var(--rule);border-radius:8px;" aria-label="Total pipeline value" />
+          <label for="opportunity-count" class="eyebrow">Number of active opportunities</label>
+          <input id="opportunity-count" name="opportunities" type="number" min="0" step="1" placeholder="e.g. 50" style="padding:8px;border:1px solid var(--rule);border-radius:8px;" aria-label="Number of active opportunities" />
 
-    <!-- Scoring instrument (hidden by default) -->
-    <section id="assessment" class="panel assessment" aria-hidden="true">
-      <header style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
-        <div>
-          <h2 style="margin:0;font-size:20px;">Find Your Pipeline Quality Score™</h2>
-          <p class="sub" style="margin-top:6px;">9 evidence dimensions. 1 executive signal. No guesswork.</p>
-        </div>
-        <div style="text-align:right;min-width:220px;">
-          <div aria-live="polite" aria-atomic="true" id="score-summary">
-            <div class="result-card" id="result-card">
-              <div class="result-score">
-                <div class="score-number" id="score-number">—</div>
-                <div class="score-label" id="score-label">No score</div>
-              </div>
-              <div class="result-values">
-                <div>Evidence-supported <div id="evidence-supported" class="figure">—</div></div>
-                <div>Requires validation <div id="requires-validation" class="figure text-risk">—</div></div>
-              </div>
-            </div>
-            <p style="font-size:12px;color:var(--muted);margin-top:8px;">Your assessment runs locally in your browser. No opportunity data is sent to a server.</p>
+          <div style="margin-left:auto;display:flex;gap:8px;align-items:center;">
+            <button type="button" id="save" class="btn-ink">Save locally</button>
+            <button type="button" id="reset" class="btn-ink">Reset</button>
+            <button type="button" id="copy-result" class="btn-ink">Copy Result</button>
+            <button type="button" id="open-xray" class="btn-ink">Opportunity X‑Ray</button>
           </div>
         </div>
-      </header>
 
-      <form id="scoring-form" onsubmit="return false;" style="margin-top:18px;display:grid;grid-template-columns:1fr 320px;gap:18px;">
-        <div>
-          <fieldset>
-            <legend class="eyebrow">A. Pipeline / commercial context</legend>
-            <div style="display:flex;gap:12px;align-items:center;margin-top:8px;flex-wrap:wrap;">
-              <label for="pipeline-value" style="min-width:160px;">Total pipeline value</label>
-              <input id="pipeline-value" type="number" inputmode="decimal" step="0.01" min="0" placeholder="0" aria-label="Total pipeline value in dollars" style="flex:1;max-width:320px;padding:8px;border-radius:8px;border:1px solid var(--rule)" />
-            </div>
-            <div style="display:flex;gap:12px;align-items:center;margin-top:12px;flex-wrap:wrap;">
-              <label for="opportunity-count" style="min-width:160px;">Number of active opportunities</label>
-              <input id="opportunity-count" type="number" min="0" step="1" placeholder="0" aria-label="Number of active opportunities" style="width:140px;padding:8px;border-radius:8px;border:1px solid var(--rule)" />
-            </div>
-          </fieldset>
+        <div style="margin-top:14px;display:grid;grid-template-columns:2fr 1fr;gap:18px;">
+          <div>
+            <div class="panel" style="padding:12px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+                <div>
+                  <p class="eyebrow">Find Your Pipeline Quality Score™</p>
+                  <p class="sub">9 evidence dimensions. 1 executive signal. No guesswork.</p>
+                </div>
+                <div style="width:140px;text-align:right;">
+                  <div class="result-card" aria-live="polite">
+                    <div class="result-score">
+                      <div id="score-number" class="score-number">Assessment incomplete</div>
+                      <div id="score-label" class="score-label">0 of 9 dimensions completed</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-          <fieldset style="margin-top:14px;">
-            <legend class="eyebrow">B. Evidence dimensions — 0 to 100</legend>
+              <div style="margin-top:12px;">
+                <div class="meter-track-lg" style="height:12px;border-radius:999px;overflow:hidden;background:linear-gradient(90deg,rgba(23,21,15,0.04),rgba(23,21,15,0.02));">
+                  <div id="progress-fill" class="meter-fill" style="width:0;height:100%;background:var(--focus);"></div>
+                </div>
+              </div>
 
-            <!-- Dimensions: each row has a label, a range input and a numeric input -->
-            <div class="dimensions" id="dimensions">
-              <!-- JS will populate sliders here for the nine dimensions -->
+              <div id="dimensions" style="margin-top:12px;">
+                <!-- JS will render the nine dimension controls here -->
+              </div>
             </div>
 
-            <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-              <button id="reset" class="btn-ink" type="button">Reset</button>
-              <button id="save" class="btn-ink" type="button">Save locally</button>
-              <button id="copy-result" class="btn-ink" type="button">Copy Result</button>
+            <div style="margin-top:12px;" class="panel">
+              <p class="eyebrow">Evidence Gap</p>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;">
+                <div class="sub">Evidence-supported estimate</div>
+                <div id="evidence-supported" class="figure text-supported">—</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-top:6px;">
+                <div class="sub">Requires validation</div>
+                <div id="requires-validation" class="figure text-risk">—</div>
+              </div>
+              <p class="sub" style="margin-top:8px;color:var(--muted);">The estimate is derived from the assessment inputs and runs locally in your browser. This is an evidence-supported estimate, not a guaranteed forecast.</p>
             </div>
-          </fieldset>
+
+          </div>
+
+          <aside>
+            <div class="panel">
+              <p class="eyebrow">Your biggest pipeline constraints</p>
+              <ul id="constraints-list" style="margin-top:8px;list-style:none;padding:0;">
+                <li style="color:var(--muted);">Complete the remaining dimensions to identify the true weakest constraints.</li>
+              </ul>
+            </div>
+
+            <div id="xray-panel" class="xray-panel" style="margin-top:12px;">
+              <!-- Opportunity X-Ray content is rendered here -->
+            </div>
+          </aside>
         </div>
-
-        <aside>
-          <section class="panel" style="padding:12px;">
-            <p class="eyebrow">Progress</p>
-            <div style="margin-top:8px;">
-              <div class="meter-track-lg" aria-hidden="true"><div id="progress-fill" class="meter-fill" style="width:0%"></div></div>
-              <p class="sub" style="margin-top:8px;color:var(--muted);">Complete the nine dimension sliders for an immediate score. Use keyboard or touch. Scoring is deterministic and local.</p>
-            </div>
-          </section>
-
-          <section class="panel" style="margin-top:12px;padding:12px;" aria-labelledby="constraints-heading">
-            <p id="constraints-heading" class="eyebrow">Your biggest pipeline constraints</p>
-            <ol id="constraints-list" style="margin:10px 0 0;padding-left:18px;color:var(--muted);">
-              <li>—</li>
-              <li>—</li>
-              <li>—</li>
-            </ol>
-          </section>
-
-          <section class="panel" style="margin-top:12px;padding:12px;">
-            <p class="eyebrow">Opportunity X‑Ray™ (optional)</p>
-            <p class="sub" style="margin-top:8px;">Quick probe for a single opportunity's exposure.</p>
-            <div style="margin-top:10px;">
-              <label for="x-value">Opportunity value</label>
-              <input id="x-value" type="number" inputmode="decimal" step="0.01" min="0" placeholder="0" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--rule);margin-top:6px;" />
-              <button id="open-xray" type="button" class="btn-ink" style="margin-top:8px;">Open X‑Ray</button>
-            </div>
-          </section>
-        </aside>
       </form>
-
-      <div id="xray-panel" class="panel xray-panel" aria-hidden="true" style="margin-top:14px;">
-        <!-- JS will render X-Ray form and result -->
-      </div>
-
-      <div style="margin-top:12px;font-size:13px;color:var(--muted);">How your score is calculated: the Pipeline Quality Score™ is the average of nine evidence dimensions (0–100). Evidence-supported pipeline = reported pipeline × score / 100. This is an evidence-based estimate and not an accounting or forecast.</div>
     </section>
 
   </div>
   <aside>
     <div class="panel">
       <p class="eyebrow">Pipeline snapshot</p>
-      <p class="figure text-caution" id="demo-score" style="font-size:28px;margin-top:8px;">50</p>
-      <p class="sub" style="margin-top:8px;">Pipeline quality — primary constraints: Timing &amp; Close Integrity</p>
+      <p class="figure text-caution" style="font-size:28px;margin-top:8px;">50</p>
+      <p class="sub" style="margin-top:8px;">Pipeline quality — primary constraints: Timing & Close Integrity</p>
     </div>
   </aside>
 </div>
